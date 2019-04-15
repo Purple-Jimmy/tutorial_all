@@ -10,6 +10,10 @@
   <modules>
     <module>tutorial_common</module>
     <module>tutorial_springboot</module>
+      <module>tutorial_redis</module>
+      <module>tutorial_mongodb</module>
+      <module>tutorial_java</module>
+      <module>tutorial_spring</module>
   </modules>
   <name>tutorial_all</name>
   <packaging>pom</packaging>
