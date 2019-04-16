@@ -62,4 +62,24 @@ public class RequestMockDemo extends MockMvcResultMatchers {
         System.out.println(mvcResult.getResponse().getErrorMessage()+"--");
         System.out.println(mvcResult.getResponse().getContentAsString()+"++++");//将相应的数据转换为字符串
     }
+
+
+    @Test
+    public void customExceptionTest() throws Exception {
+        String url ="/customException";
+        RequestBuilder request = MockMvcRequestBuilders.post(url)
+                //.content(mapper.writeValueAsString(account))
+                .contentType(MediaType.APPLICATION_JSON_UTF8);
+
+        MvcResult mvcResult = mockMvc.perform(request)
+                //使用jsonPath解析返回值,判断具体的内容
+                //  .andExpect(jsonPath("$.errorCode", is("301")))
+                //.andDo(print()) //打印出请求和响应的内容
+                .andReturn();
+        int statusCode = mvcResult.getResponse().getStatus();
+        System.out.println(statusCode+"-=========");
+        Assert.assertEquals(statusCode, 200);
+        System.out.println(mvcResult.getResponse().getErrorMessage()+"--");
+        System.out.println(mvcResult.getResponse().getContentAsString()+"++++");//将相应的数据转换为字符串
+    }
 }
