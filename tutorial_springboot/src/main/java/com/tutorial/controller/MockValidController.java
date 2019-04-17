@@ -41,7 +41,6 @@ public class MockValidController {
                 //获取错误信息
                 String errorMsg = messageSource.getMessage(error,local);
                 str.append(error.getField()+":"+errorMsg+",");
-
             }
             return str.toString();
         }
