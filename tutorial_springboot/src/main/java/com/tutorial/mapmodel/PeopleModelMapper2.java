@@ -12,7 +12,7 @@ import java.util.List;
  * @Author: jimmy
  * @Date: 2019/4/18
  */
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",uses = CustomConvert.class)
 public interface PeopleModelMapper2 {
     @Mappings({
             @Mapping(target = "id",source = "id"),

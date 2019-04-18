@@ -40,7 +40,7 @@ public class MapStructController {
         people.setId(2L);
         people.setUserName("Jimmy");
         people.setBirth(new Date());
-
+        people.setSex(true);
         PeopleModel peopleModel = peopleModelMapper2.convert(people);
         return peopleModel;
     }

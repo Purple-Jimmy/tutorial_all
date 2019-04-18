@@ -47,4 +47,44 @@ public Object convertDTO(){
 }
 ```
 
+## 自定义转换
+1. default()方式
+```
+default String convert2Bool(Boolean value) {
+   if(value){
+       return "man";
+   }else {
+       return "woman";
+   }
+}
+```
+2. uses注解方式
+首先定义一个转换类
+```
+@Component
+public class CustomConvert {
+
+    public String asString(Boolean value){
+        if(value){
+            return "trueStr";
+        }
+        return "falseStr";
+    }
+}
+```
+在使用的时候加上注解uses
+```
+@Mapper(componentModel = "spring",uses = CustomConvert.class)
+public interface PeopleModelMapper2 {
+    @Mappings({
+            @Mapping(target = "id",source = "id"),
+            @Mapping(target = "name",source = "userName"),
+            @Mapping(target = "birthDay",source = "birth",dateFormat = "yyyy-MM-dd HH:mm:ss"),
+            @Mapping(target = "email",ignore = true)})
+    PeopleModel convert(People people);
+
+    List<PeopleModel> convertList(List<People> list);
+}
+```
+
 

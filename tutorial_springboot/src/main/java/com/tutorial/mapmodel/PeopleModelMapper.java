@@ -25,6 +25,11 @@ public interface PeopleModelMapper {
 
     List<PeopleModel> convertList(List<People> list);
 
+    /**
+     * 转换时如果属性中有类型是Boolean,将会默认调用此方法转换
+     * @param value
+     * @return
+     */
     default String convert2Bool(Boolean value) {
        if(value){
            return "man";
